@@ -12,6 +12,16 @@ import (
 const MinWeightValue = 18.5
 const MaxWeightValue = 24.99
 
+func IndexHandler(ctx iris.Context) {
+
+	api := iris.Map{
+		"Title":   "Peso API",
+		"Version": "1.0",
+	}
+
+	ctx.JSON(api)
+}
+
 func ImcHandler(ctx iris.Context) {
 
 	height, err := strconv.ParseFloat(ctx.FormValue("height"), 64)

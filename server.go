@@ -15,6 +15,7 @@ func main() {
 	app.Use(recover.New())
 	app.Use(logger.New())
 
+	app.Get("/", handlers.IndexHandler)
 	app.Get("/imc", handlers.ImcHandler)
 	app.Get("/weights", handlers.WeightsHandler)
 
