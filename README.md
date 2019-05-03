@@ -11,7 +11,7 @@
 }
 ```
 
-#### Calculo de peso min & max
+#### Calculo de peso ideal min & max
 `GET` /weights?height=1.70
 ```json
 {
