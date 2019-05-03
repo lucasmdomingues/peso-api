@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"peso-api/src/handlers"
 
 	"github.com/kataras/iris"
@@ -9,6 +10,12 @@ import (
 )
 
 func main() {
+
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
 
 	app := iris.New()
 
@@ -19,5 +26,5 @@ func main() {
 	app.Get("/imc", handlers.ImcHandler)
 	app.Get("/weights", handlers.WeightsHandler)
 
-	app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
+	app.Run(iris.Addr(":"+port), iris.WithoutServerError(iris.ErrServerClosed))
 }
