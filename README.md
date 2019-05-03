@@ -2,7 +2,8 @@
 
 ### Como usar
 
-`GET` /imc?height=1.70&weight=70 - Calcula o IMC
+### Calculo de IMC
+`GET` /imc?height=1.70&weight=70
 ```json
 {
   "data": {
@@ -12,8 +13,8 @@
 }
 ```
 
-
-`GET` /weights?height=1.70 - Calcula o peso min & max
+#### Calculo de peso min & max
+`GET` /weights?height=1.70
 ```json
 {
   "data": {
