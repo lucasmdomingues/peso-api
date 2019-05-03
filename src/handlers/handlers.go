@@ -13,13 +13,7 @@ const MinWeightValue = 18.5
 const MaxWeightValue = 24.99
 
 func IndexHandler(ctx iris.Context) {
-
-	api := iris.Map{
-		"Title":   "Peso API",
-		"Version": "1.0",
-	}
-
-	ctx.JSON(api)
+	ctx.JSON(iris.Map{"Title": "Peso API", "Version": "1.0"})
 }
 
 func ImcHandler(ctx iris.Context) {
@@ -32,7 +26,7 @@ func ImcHandler(ctx iris.Context) {
 
 	weight, err := strconv.ParseFloat(ctx.FormValue("weight"), 64)
 	if err != nil {
-		logs.Error(ctx, err, "Error on parse height")
+		logs.Error(ctx, err, "Error on parse weight")
 		return
 	}
 
