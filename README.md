@@ -1,8 +1,6 @@
 # Peso API
 
-### Como usar
-
-### Calculo de IMC
+#### Calculo de IMC
 `GET` /imc?height=1.70&weight=70
 ```json
 {
