@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    ...
+    command: go build
   deploy:
     docker:
       - image: buildpack-deps:trusty
@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/peso-api.git master
 
 workflows:
   version: 2
