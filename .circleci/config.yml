@@ -1,15 +1,25 @@
-# Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
-version: 2.1
+version: 2
+jobs:
+  build:
+    ...
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
-# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
-
-# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
 workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
+  version: 2
+  build-deploy:
     jobs:
-      - welcome/run
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
